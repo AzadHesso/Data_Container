@@ -80,7 +80,7 @@ void IntegerArray::resize(int newLength)
 
 void IntegerArray::insertBefore(int value, int index)
 {
-    if (index <= 0 || index > m_length)  // Sanity check our index value
+    if (index < 0 || index > m_length)  // Sanity check our index value
     {
         throw Bad_range();
     }
@@ -101,10 +101,45 @@ void IntegerArray::insertBefore(int value, int index)
     
 }
 
-void IntegerArray::show()
+void IntegerArray::remove(int index)
 {
-      cout << m_length << endl;
+  
+    if (index < 0 || index > m_length)   // Sanity check our index value
+    {
+        throw Bad_length();
+    }
+
+    if (m_length == 1)    // If this is the last remaining element in the array, set the array to empty and bail out
+    {
+        erase();
+        return;
+    }
+
+    int* data = new int[m_length - 1] ;                    // First create a new array one element smaller than the old array
+
+
+    for (int before = 0 ; before < index; ++before)        // Copy all of the elements up to the index
+        data[before] = m_data[before];
+
+    for (int after{ index + 1 }; after < m_length; ++after) // Copy all of the values after the removed element
+        data[after - 1] = m_data[after];
+
+    delete[] m_data;   // Finally, delete the old array, and use the new array instead
+    m_data = data;
+    --m_length;
+   
 }
+
+void IntegerArray::insertAtBeginning(int value)   
+{
+    insertBefore(value, 0);
+}
+
+void IntegerArray::insertAtEnd(int value) 
+{
+    insertBefore(value, m_length);
+}
+
 
 const char* Bad_length::what() const noexcept
 {

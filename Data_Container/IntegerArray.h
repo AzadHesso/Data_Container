@@ -42,9 +42,14 @@ public:
     void resize(int newLength);    //resize resizes the array.  Any existing elements will be kept.
                                    //This function operates slowly.
 
-    void insertBefore(int value, int index);
+    void insertBefore(int value, int index); //Insert Value Before
+
+    void remove(int index);             //Remove Value of array
+
+    void insertAtBeginning(int value);  //Insert value at begining array
+
+    void insertAtEnd(int value);        //Insert value at end of array
     
-    void show();
   
 };
 
