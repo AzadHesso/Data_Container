@@ -5,7 +5,16 @@ using namespace std;
 
 int main()
 {
-	cout << "Hello world!" << endl;
+    try
+    {
+        IntegerArray ob1(10);
+        ob1.show();
+    }
+    catch (exception& e)
+    {
+        cout << e.what();
+    }
+	
 
 	return 0;
 }
