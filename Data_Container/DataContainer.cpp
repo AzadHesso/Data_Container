@@ -73,10 +73,31 @@ int main()
 
     array.insertAtBeginning(50);  
 
+
     // Print out all the numbers
     cout << "Print out all the numbers of array m_data[" << array.getLength() << "] = ";
-    for (int j = 0; j < array.getLength(); j++)
-        cout << array[j] << " ";
-    
+    for (int i = 0; i < array.getLength(); i++)
+        cout << array[i] << " ";
+    cout << endl;
+
+    // search in the element container by index.
+    try
+    {
+        int index = -1;
+        int arr = array.sercheValue(index);
+        cout << "value by index " << index << " = " << arr << endl;
+
+    }
+    catch(exception& e)
+    {
+        cout << e.what() << endl;
+    }
+    int index = 9;
+    int arr = array.sercheValue(index);
+    cout << "value by index " << index << " = " << arr << endl;
+
+
+
+ 
 	return 0;
 }

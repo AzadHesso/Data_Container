@@ -50,6 +50,9 @@ public:
 
     void insertAtEnd(int value);        //Insert value at end of array
     
+   // поиска в контейнере элемента по индексу.
+
+    int sercheValue(int index);
   
 };
 
@@ -69,4 +72,14 @@ public:
    ~Bad_range() = default;
 
    virtual const char* what() const noexcept override;
+};
+
+class Bad_Value : public exception
+{
+public:
+    Bad_Value() = default;
+   ~Bad_Value() = default;
+
+    virtual const char* what() const noexcept override;
+
 };

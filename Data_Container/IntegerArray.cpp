@@ -140,6 +140,26 @@ void IntegerArray::insertAtEnd(int value)
     insertBefore(value, m_length);
 }
 
+int IntegerArray::sercheValue(int index)
+{
+    
+    
+    for (int i = 0; i < m_length; i++)
+    {     
+        if (i == index)
+        {
+            return m_data[index];
+        }
+        if (index < 0 || index > m_length)   // Sanity check our index value
+        {
+            throw Bad_Value();
+        }
+        
+    }
+}
+
+
+
 
 const char* Bad_length::what() const noexcept
 {
@@ -151,4 +171,9 @@ const char* Bad_length::what() const noexcept
 const char* Bad_range::what() const noexcept
 {
     return "Error: length out of range!";
+}
+
+const char* Bad_Value::what() const noexcept
+{
+    return "this value does not exist";
 }
