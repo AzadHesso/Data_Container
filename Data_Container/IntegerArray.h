@@ -29,13 +29,18 @@ public:
 
     ~IntegerArray();
 
-  // void erase();
+    void erase();
 
     int& operator[](int index); //перегрузим оператор [], чтобы мы могли получить доступ к элементам массива. 
                                 //ћы должны проверить индекс, чтобы убедитьс€, что он действителен
 
     int getLength() const;      //функцию доступа дл€ возврата длины массива
-   
+
+    void reallocate(int newLength); //reallocate resizes the array.  Any existing elements will be destroyed. 
+                                    //This function operates quickly.
+
+    void resize(int newLength);    //resize resizes the array.  Any existing elements will be kept.
+                                   //This function operates slowly.
     void show();
   
 };
