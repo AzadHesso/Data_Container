@@ -41,6 +41,9 @@ public:
 
     void resize(int newLength);    //resize resizes the array.  Any existing elements will be kept.
                                    //This function operates slowly.
+
+    void insertBefore(int value, int index);
+    
     void show();
   
 };

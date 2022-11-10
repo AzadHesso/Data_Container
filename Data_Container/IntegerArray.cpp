@@ -78,6 +78,29 @@ void IntegerArray::resize(int newLength)
 
 }
 
+void IntegerArray::insertBefore(int value, int index)
+{
+    if (index <= 0 || index > m_length)  // Sanity check our index value
+    {
+        throw Bad_range();
+    }
+
+    int* data = new int[m_length + 1];  // First create a new array one element larger than the old array
+
+    for (int before = 0; before < index; ++before)  // Copy all of the elements up to the index
+        data[before] = m_data[before];
+
+    data[index] = value;     // Insert our new element into the new array
+
+    for (int after = index ; after < m_length; ++after)      // Copy all of the values after the inserted element
+        data[after + 1] = m_data[after];
+
+    delete[] m_data;   // Finally, delete the old array, and use the new array instead
+    m_data = data;
+    ++m_length;
+    
+}
+
 void IntegerArray::show()
 {
       cout << m_length << endl;
